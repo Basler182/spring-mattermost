@@ -66,6 +66,37 @@ public class AlertHandler {
 }
 ```
 
+### Example Usage of `IncomingWebhookResponse` Fluent API
+
+```java
+IncomingWebhookResponse response = IncomingWebhookResponse.builder()
+        .text("This is a test message")
+        .responseType(IncomingWebhookResponse.ResponseType.COMMENT)
+        .username("test-user")
+        .iconUrl("https://example.com/icon.png")
+        .attachments(List.of(Attachment.builder().title("title").build()))
+        .type("example-type")
+        .props(Map.of("key1", "value1", "key2", "value2"))
+        .priority(Priority.builder().priority(Priority.PriorityLevel.URGENT).build())
+        .build();
+```
+
+### Example Usage of `OutgoingWebhookPayload` Fluent API
+
+```java
+OutgoingWebhookPayload payload = OutgoingWebhookPayload.builder()
+        .text("This is a test message")
+        .channel("test-channel")
+        .username("test-user")
+        .iconUrl("https://example.com/icon.png")
+        .iconEmoji(":smile:")
+        .attachments(List.of(Attachment.builder().text("Attachment text").build()))
+        .type("example-type")
+        .props(Map.of("key1", "value1", "key2", "value2"))
+        .priority(Priority.builder().priority(Priority.PriorityLevel.URGENT).build())
+        .build();
+```
+
 ### Annotation Parameters
 
 `@MattermostHandler` supports:
