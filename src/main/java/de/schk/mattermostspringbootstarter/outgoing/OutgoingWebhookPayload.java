@@ -2,6 +2,7 @@ package de.schk.mattermostspringbootstarter.outgoing;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import de.schk.mattermostspringbootstarter.shared.Attachment;
 import de.schk.mattermostspringbootstarter.shared.Priority;
 import jakarta.validation.constraints.AssertTrue;
 
