@@ -1,4 +1,4 @@
-# Mattermost Spring Boot Starter
+# Mattermost Spring Boot Starter [![Release](https://jitpack.io/v/Basler182/spring-mattermost.svg)](https://jitpack.io/#Basler182/spring-mattermost) ![Weekly download statistics](https://jitpack.io/v/Basler182/spring-mattermost/week.svg) ![Monthly download statistics](https://jitpack.io/v/Basler182/spring-mattermost/month.svg)
 
 A Spring Boot Starter for seamless integration with Mattermost webhooks, supporting both incoming and outgoing webhook
 handling with full parameter support.
