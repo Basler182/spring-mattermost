@@ -7,8 +7,17 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  checkout:
+    name: Checkout Repository
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+  setup-java:
+    name: Setup JDK 21
+    runs-on: ubuntu-latest
+    needs: checkout
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,25 +29,44 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Cache Maven dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            maven-${{ runner.os }}-
+  build:
+    name: Build with Maven
+    runs-on: ubuntu-latest
+    needs: setup-java
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Build and test with Maven
-        run: mvn -B clean verify --file pom.xml
+      - name: Build Project
+        run: mvn -B clean package --file pom.xml
 
-      - name: Upload test reports
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Maven Tests
+        run: mvn -B test --file pom.xml
+
+      - name: Upload Test Results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: target/surefire-reports/
 
-      - name: Upload build artifact
+  artifact-upload:
+    name: Upload Build Artifact
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload Build Artifact
         if: success()
         uses: actions/upload-artifact@v4
         with:
