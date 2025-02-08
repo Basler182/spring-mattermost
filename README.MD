@@ -32,12 +32,34 @@ mattermost:
         token: your-ci-webhook-token
 ```
 
+## Dependency
+
+To include the Mattermost Spring Boot Starter in your project, add the following dependency to your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.github.Basler182</groupId>
+    <artifactId>spring-mattermost</artifactId>
+    <version>Tag</version>
+</dependency>
+```
+
+Add the JitPack repository to your pom.xml:
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
 ## Usage
 
 ### Sending Messages to Mattermost
 
 ```java
-
 @Service
 public class AlertService {
     private final MattermostWebhookClient webhookClient;
@@ -51,7 +73,6 @@ public class AlertService {
 ### Receiving Webhooks from Mattermost
 
 ```java
-
 @Service
 public class AlertHandler {
     @MattermostHandler(
