@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: mattermost-spring-boot-starter
+
+mattermost:
+  outgoing:
+    url: https://your-mattermost-server/hooks/abc123
+  incoming:
+    path: /webhooks
+    webhooks:
+      - id: alerts
+        token: alert-webhook-token
+      - id: events
+        token: event-webhook-token
