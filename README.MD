@@ -44,7 +44,7 @@ To include the Mattermost Spring Boot Starter in your project, add the following
 </dependency>
 ```
 
-Add the JitPack repository to your pom.xml:
+Add the JitPack repository to your `pom.xml`:
 
 ```xml
 <repositories>
