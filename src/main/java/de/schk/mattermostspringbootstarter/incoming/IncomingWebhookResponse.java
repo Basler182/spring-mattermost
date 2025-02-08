@@ -2,6 +2,7 @@ package de.schk.mattermostspringbootstarter.incoming;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import de.schk.mattermostspringbootstarter.shared.Priority;
 import de.schk.mattermostspringbootstarter.outgoing.Attachment;
 import jakarta.validation.constraints.AssertTrue;
 
@@ -25,18 +26,6 @@ public record IncomingWebhookResponse(
     @AssertTrue(message = "Either text or attachments must be provided")
     public boolean isValid() {
         return text != null || attachments != null;
-    }
-
-    public record Priority(
-            PriorityLevel priority,
-            @JsonProperty("requested_ack")
-            boolean requestedAck
-    ) {
-
-        public enum PriorityLevel {
-            @JsonProperty("urgent")
-            URGENT,
-        }
     }
 
     public enum ResponseType {
