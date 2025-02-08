@@ -53,7 +53,7 @@ public class AlertService {
 
 @Service
 public class AlertHandler {
-    @MattermostWebhookHandler(
+    @MattermostHandler(
             hookId = "alerts",
             triggerWord = "!alert",
             textPattern = ".*CRITICAL.*"
