@@ -1,5 +1,6 @@
 package de.schk.mattermostspringbootstarter.incoming;
 
+import de.schk.mattermostspringbootstarter.shared.Priority;
 import org.junit.jupiter.api.Test;
 
 import java.util.function.Function;
@@ -26,7 +27,7 @@ public class WebhookHandlerRegistryTest {
     }
 
     public static IncomingWebhookRequest createIncomingWebhookRequest() {
-        return  createIncomingWebhookRequest("trigger");
+        return createIncomingWebhookRequest("trigger");
     }
 
     public static IncomingWebhookRequest createIncomingWebhookRequest(String trigger) {
@@ -34,6 +35,15 @@ public class WebhookHandlerRegistryTest {
     }
 
     public static IncomingWebhookResponse createIncomingWebhookResponse() {
-        return new IncomingWebhookResponse("text", IncomingWebhookResponse.ResponseType.COMMENT, "username", "iconUrl", null, null, null, null);
+        return IncomingWebhookResponse.builder()
+                .text("Response message")
+                .responseType(IncomingWebhookResponse.ResponseType.COMMENT)
+                .username("Responder")
+                .iconUrl("https://example.com/icon.png")
+                .priority(Priority.builder()
+                        .priority(Priority.PriorityLevel.URGENT)
+                        .requestedAck(true)
+                        .build())
+                .build();
     }
 }

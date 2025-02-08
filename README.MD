@@ -13,6 +13,7 @@ handling with full parameter support.
 - **Autoconfiguration** with Spring Boot
 - **Validation** for required parameters
 - **Security** with token validation
+- **Type-safe Payload Building** with fluent API
 
 ## Configuration
 
