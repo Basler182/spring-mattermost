@@ -1,0 +1,15 @@
+POST http://localhost:8080/webhook
+Content-Type: application/json
+
+{
+  "token": "your-webhook-token",
+  "team_id": "team123",
+  "team_domain": "your-team",
+  "channel_id": "channel456",
+  "channel_name": "alerts",
+  "user_id": "user789",
+  "user_name": "john.doe",
+  "post_id": "post123",
+  "text": "!alert CRITICAL: Database connection failed",
+  "trigger_word": "!alert"
+}
