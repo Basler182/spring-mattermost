@@ -1,8 +1,8 @@
-POST http://localhost:8080/webhook
+POST http://localhost:8080/webhooks
 Content-Type: application/json
 
 {
-  "token": "your-webhook-token",
+  "token": "alert-webhook-token",
   "team_id": "team123",
   "team_domain": "your-team",
   "channel_id": "channel456",
